@@ -1,0 +1,1 @@
+huff :; huffc -e shanghai -b ./src/horseStoreV1/HorseStore.huff
