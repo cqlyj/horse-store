@@ -1,0 +1,7 @@
+// 60008060093d393df3 => contract creation code
+// take the binary after me, and stick it on chain
+// 39 CODECOPY
+
+// xxx                => run time code
+// xxx                => metadata
+#define macro MAIN() = takes(0) returns(0) {}
