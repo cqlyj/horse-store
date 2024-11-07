@@ -5,6 +5,14 @@
 
 // xxx                => run time code
 // xxx                => metadata
+
+/*
+* Interfaces
+*/
+
+#define function updateHorseNumber(uint256) nonpayable returns()
+#define function readNumberOfHorses() view returns(uint256)
+
 #define macro MAIN() = takes(0) returns(0) {
     0x00            // TOP [0] BOTTOM
 
@@ -31,13 +39,13 @@
 
     dup1             // [functionSelector, functionSelector]
 
-    0xcdfead2e       // [0xcdfead2e, functionSelector, functionSelector]
+    __FUNC_SIG(updateHorseNumber)       // [0xcdfead2e, functionSelector, functionSelector]
     eq               // [true_if_functionSelector_is_updateHorseNumber, functionSelector]
     // jump to updateHorseNumber if true
     updateJump       // [updateHorseNumberProgramCounter, true_if_functionSelector_is_updateHorseNumber, functionSelector]
     jumpi            // [functionSelector]
 
-    0xe026c017       // [0xe026c017, functionSelector]
+    __FUNC_SIG(readNumberOfHorses)       // [0xe026c017, functionSelector]
     eq               // [true_if_functionSelector_is_readNumberOfHorses]
     readJump         // [readNumberOfHorsesProgramCounter, true_if_functionSelector_is_readNumberOfHorses]
     jumpi            // []
