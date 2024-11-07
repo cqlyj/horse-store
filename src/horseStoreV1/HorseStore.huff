@@ -42,6 +42,9 @@
     readJump         // [readNumberOfHorsesProgramCounter, true_if_functionSelector_is_readNumberOfHorses]
     jumpi            // []
 
+    // revert (offset, size)
+    0x00 0x00 revert // [0, 0] => []
+
     updateJump:
         SET_NUMBER_OF_HORSES() 
     readJump:
