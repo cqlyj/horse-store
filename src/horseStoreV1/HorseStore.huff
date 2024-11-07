@@ -1,7 +1,24 @@
 // 60008060093d393df3 => contract creation code
 // take the binary after me, and stick it on chain
 // 39 CODECOPY
+// f3 RETURN
 
 // xxx                => run time code
 // xxx                => metadata
-#define macro MAIN() = takes(0) returns(0) {}
+#define macro MAIN() = takes(0) returns(0) {
+    0x00            // TOP [0] BOTTOM
+
+    // calldataload can put 32 bytes of calldata into the stack
+    calldataload    // [calldata]
+
+    // SHR opcode 
+    // 0x1220 (bytes)
+    // 1 byte = 8 bits
+    // 0b 10010 00100000 = 4640
+    // 0b1001000100000 >> 2 = 0b0010010001000 = 1160 = 4640 / 4
+
+    // calldata is 32 bytes long, the function selector is 4 bytes long
+    // so we need to shift right by 28 bytes = 28 * 8 = 224 bits
+    0xe0            // [0xe0 ,calldata]
+    shr             // [functionSelector]
+}
