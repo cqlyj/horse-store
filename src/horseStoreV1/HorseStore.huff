@@ -76,4 +76,13 @@
     stop
 }
 
-#define macro GET_NUMBER_OF_HORSES() = takes(0) returns(0){}
+#define macro GET_NUMBER_OF_HORSES() = takes(0) returns(0){
+    [NUMBER_OF_HORSES_STORAGE_SLOT] // [storage_slot]
+    sload // [value]
+    0x00 // [0x00, value]
+
+    // mstore takes the offset as the first argument, since nothing is in memory, it will be 0x00
+    mstore // [] => store the value in memory: [value] 
+    0x20 0x00 // [0x00, 0x20] => offset 0, size of 32 bytes
+    return // [] => return the value in memory of size 32 bytes, offset 0
+}
