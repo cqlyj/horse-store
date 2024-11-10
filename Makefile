@@ -10,3 +10,5 @@ yulCompileBinary :; solc --strict-assembly --optimize --optimize-runs 20000 ./yu
 
 debug-testReadValue-huff :; @forge test --match-path *Huff* --debug testReadValue -vvvv
 debug-testWriteValue-huff :; @forge test --match-path *Huff* --debug testWriteValue -vvvv
+
+v2huff :; huffc -e shanghai -b ./src/horseStoreV2/HorseStore.huff
