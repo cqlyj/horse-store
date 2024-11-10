@@ -1,4 +1,4 @@
-install :; @forge install huff-language/foundry-huff --no-commit
+install :; @forge install huff-language/foundry-huff --no-commit && forge install huff-language/huffmate --no-commit && forge install openzeppelin/openzeppelin-contracts --no-commit
 
 huff :; huffc -e shanghai -b ./src/horseStoreV1/HorseStore.huff
 
